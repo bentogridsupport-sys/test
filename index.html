@@ -50,9 +50,7 @@
             animation: fadeIn 0.8s forwards;
         }
 
-        .item:first-child {
-            padding-top: 0;
-        }
+        .item:first-child { padding-top: 0; }
 
         @keyframes fadeIn {
             to {
@@ -87,7 +85,6 @@
             font-weight: 400;
             letter-spacing: -0.02em;
             margin-bottom: 2px;
-            transition: var(--transition);
         }
 
         .item-subtitle {
@@ -98,7 +95,6 @@
             letter-spacing: 0.1em;
         }
 
-        /* Bouton Voir Plus */
         .more-btn {
             background: none;
             border: none;
@@ -118,7 +114,6 @@
             border-bottom-color: var(--text-dark);
         }
 
-        /* Texte caché */
         .description {
             max-height: 0;
             overflow: hidden;
@@ -129,19 +124,42 @@
         }
 
         .item.active .description {
-            max-height: 200px;
-            margin-top: 20px;
+            max-height: 600px;
+            margin-top: 24px;
             opacity: 1;
         }
 
         .description-text {
             font-size: 14px;
             color: var(--text-muted);
-            max-width: 500px;
-            padding-bottom: 10px;
+            max-width: 550px;
+            margin-bottom: 20px;
+            white-space: pre-line;
         }
 
-        /* Délais d'animation */
+        .links-grid {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 10px;
+        }
+
+        .shop-link {
+            display: inline-block;
+            font-size: 11px;
+            text-decoration: none;
+            color: var(--text-dark);
+            border: 1px solid var(--text-dark);
+            padding: 8px 16px;
+            text-transform: uppercase;
+            letter-spacing: 0.05em;
+            transition: var(--transition);
+        }
+
+        .shop-link:hover {
+            background-color: var(--text-dark);
+            color: white;
+        }
+
         .item:nth-child(1) { animation-delay: 0.1s; }
         .item:nth-child(2) { animation-delay: 0.2s; }
         .item:nth-child(3) { animation-delay: 0.3s; }
@@ -156,11 +174,15 @@
         }
 
         footer {
-            margin-top: 80px;
-            font-size: 10px;
-            color: #cccccc;
-            letter-spacing: 0.2em;
-            text-transform: uppercase;
+            margin-top: 100px;
+            padding-top: 40px;
+            border-top: 1px solid var(--soft-gray);
+        }
+
+        .footer-text {
+            font-size: 12px;
+            color: var(--text-muted);
+            margin-bottom: 20px;
         }
     </style>
 </head>
@@ -168,56 +190,70 @@
     <div class="container">
         <div class="list">
             
+            <!-- Item 01 -->
             <div class="item">
                 <div class="item-main">
                     <span class="item-number">01</span>
-                    <!-- METS TON LIEN DANS LE HREF CI-DESSOUS -->
-                    <a href="https://www.decathlon.fr/tous-les-sports/musculation-cross-training/barres-de-traction" target="_blank" class="item-content" style="text-decoration:none; color:inherit;">
+                    <div class="item-content">
                         <h2 class="item-title">Barre de traction</h2>
                         <p class="item-subtitle">Je ne sais pas si c'est vraiment utile mais sans essayer, impossible de savoir.</p>
-                    </a>
+                    </div>
                     <button class="more-btn" onclick="toggleItem(this)">Détails</button>
                 </div>
                 <div class="description">
                     <p class="description-text">Le genre de barre qui se fixe entre les portes ou un modèle autoportant de type chaise-romaine pour les tractions et les dips.</p>
+                    <div class="links-grid">
+                        <a href="https://www.decathlon.fr/tous-les-sports/musculation-cross-training/barres-de-traction" target="_blank" class="shop-link">Lien Decathlon</a>
+                    </div>
                 </div>
             </div>
 
+            <!-- Item 02 -->
             <div class="item">
                 <div class="item-main">
                     <span class="item-number">02</span>
-                    <!-- METS TON LIEN DANS LE HREF CI-DESSOUS -->
+                    <div class="item-content">
                         <h2 class="item-title">Écouteurs sans fils</h2>
                         <p class="item-subtitle">Pas d'une grande nécessité mais toujours utile</p>
-                    </a>
+                    </div>
                     <button class="more-btn" onclick="toggleItem(this)">Détails</button>
                 </div>
                 <div class="description">
                     <p class="description-text">Pas de références spéciales même si des écouteurs de "sport" peuvent etre intéressant , problème: c'est horrible et peut être pas un super son.</p>
+                    <div class="links-grid">
+                        <a href="https://fr.nothing.tech/products/ear?Couleur=Blanc" target="_blank" class="shop-link">Lien Nothing Audio</a>
+                    </div>
                 </div>
             </div>
 
+            <!-- Item 03 -->
             <div class="item">
                 <div class="item-main">
                     <span class="item-number">03</span>
-                    <!-- METS TON LIEN DANS LE HREF CI-DESSOUS -->
+                    <div class="item-content">
                         <h2 class="item-title">Des chaussures</h2>
                         <p class="item-subtitle">J'ai différentes idées j'ai pas tout mis.</p>
-                    </a>
+                    </div>
                     <button class="more-btn" onclick="toggleItem(this)">Détails</button>
                 </div>
                 <div class="description">
-                    <p class="description-text">Mizuno mxr-autres modèles/Saucony riede millenium-progrid Omni/New balance 2002r ou autre jsp (au final j'ai a peut près tout mis) </p>
+                    <p class="description-text">Mizuno mxr-autres modèles/Saucony riede millenium-progrid Omni/New balance 2002r ou autre jsp (au final j'ai a peut près tout mis)</p>
+                    <div class="links-grid">
+                        <a href="https://emea.mizuno.com/eu/fr-fr/sportstyle/sneakers/homme/?_gl=1*9wq1lo*_up*MQ..*_gs*MQ..&gclid=Cj0KCQjwp7jOBhDGARIsABe7C4eK23pY6rObiXacKOs_eNtfaV-I_1uK5kEFuXEIoFHsj4FQhpfd3GYaAv--EALw_wcB&gbraid=0AAAAAC2ocqd4Eh7VleYZczO5xfktBJcmI" target="_blank" class="shop-link">Mizuno MXR</a>
+                        <a href="https://www.saucony.com/FR/fr_FR/search?q=ride+millennium" target="_blank" class="shop-link">Saucony Ride</a>
+                        <a href="https://www.courir.com/fr/c/marques/new-balance/2002r/" target="_blank" class="shop-link">NB 2002R</a>
+                    </div>
                 </div>
             </div>
 
+            <!-- Item 04 -->
             <div class="item">
                 <div class="item-main">
                     <span class="item-number">04</span>
-                    <!-- METS TON LIEN DANS LE HREF CI-DESSOUS -->
+                    <div class="item-content">
                         <h2 class="item-title">Lit</h2>
                         <p class="item-subtitle">Lit</p>
-                    </a>
+                    </div>
                     <button class="more-btn" onclick="toggleItem(this)">Détails</button>
                 </div>
                 <div class="description">
@@ -228,7 +264,10 @@
         </div>
 
         <footer>
-            Je n'ai plus d'idée si ce n'est un gros tapis de souris de ce type : https://www.exemple.com/plante"https://www.ikea.com/fr/fr/p/susig-sous-main-liege-90457486/
+            <p class="footer-text">Je n'ai plus d'idée si ce n'est un gros tapis de souris de ce type :</p>
+            <div class="links-grid">
+                <a href="https://www.ikea.com/fr/fr/p/susig-sous-main-liege-90457486/" target="_blank" class="shop-link">Lien Ikea</a>
+            </div>
         </footer>
     </div>
 
@@ -237,7 +276,6 @@
             const item = btn.closest('.item');
             item.classList.toggle('active');
             
-            // Change le texte du bouton
             if (item.classList.contains('active')) {
                 btn.textContent = 'Fermer';
             } else {
