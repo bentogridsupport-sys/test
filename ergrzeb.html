@@ -1,0 +1,252 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Selection Personnelle</title>
+    <link href="https://fonts.googleapis.com/css2?family=Bodoni+Moda:ital,wght@0,400;0,700;1,400&family=Inter:wght@300;400;500&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --bg-color: #ffffff;
+            --text-dark: #1a1a1a;
+            --text-muted: #888888;
+            --soft-gray: #f5f5f5;
+            --transition: all 0.4s cubic-bezier(0.25, 1, 0.5, 1);
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Inter', sans-serif;
+            background-color: var(--bg-color);
+            color: var(--text-dark);
+            line-height: 1.6;
+            -webkit-font-smoothing: antialiased;
+        }
+
+        .container {
+            max-width: 700px;
+            margin: 0 auto;
+            padding: 120px 40px;
+        }
+
+        .list {
+            display: flex;
+            flex-direction: column;
+        }
+
+        .item {
+            display: flex;
+            flex-direction: column;
+            padding: 45px 0;
+            border-bottom: 1px solid var(--soft-gray);
+            transition: var(--transition);
+            opacity: 0;
+            transform: translateY(15px);
+            animation: fadeIn 0.8s forwards;
+        }
+
+        .item:first-child {
+            padding-top: 0;
+        }
+
+        @keyframes fadeIn {
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .item-main {
+            display: grid;
+            grid-template-columns: 60px 1fr auto;
+            align-items: baseline;
+            text-decoration: none;
+            color: inherit;
+        }
+
+        .item-number {
+            font-family: 'Bodoni Moda', serif;
+            font-size: 16px;
+            font-style: italic;
+            color: var(--text-muted);
+        }
+
+        .item-content {
+            display: flex;
+            flex-direction: column;
+        }
+
+        .item-title {
+            font-family: 'Bodoni Moda', serif;
+            font-size: 34px;
+            font-weight: 400;
+            letter-spacing: -0.02em;
+            margin-bottom: 2px;
+            transition: var(--transition);
+        }
+
+        .item-subtitle {
+            font-size: 13px;
+            color: var(--text-muted);
+            font-weight: 400;
+            text-transform: uppercase;
+            letter-spacing: 0.1em;
+        }
+
+        /* Bouton Voir Plus */
+        .more-btn {
+            background: none;
+            border: none;
+            font-family: 'Inter', sans-serif;
+            font-size: 10px;
+            text-transform: uppercase;
+            letter-spacing: 0.15em;
+            color: var(--text-muted);
+            cursor: pointer;
+            padding: 10px;
+            transition: var(--transition);
+            border-bottom: 1px solid transparent;
+        }
+
+        .more-btn:hover {
+            color: var(--text-dark);
+            border-bottom-color: var(--text-dark);
+        }
+
+        /* Texte caché */
+        .description {
+            max-height: 0;
+            overflow: hidden;
+            transition: all 0.5s cubic-bezier(0.25, 1, 0.5, 1);
+            padding-left: 60px;
+            margin-top: 0;
+            opacity: 0;
+        }
+
+        .item.active .description {
+            max-height: 200px;
+            margin-top: 20px;
+            opacity: 1;
+        }
+
+        .description-text {
+            font-size: 14px;
+            color: var(--text-muted);
+            max-width: 500px;
+            padding-bottom: 10px;
+        }
+
+        /* Délais d'animation */
+        .item:nth-child(1) { animation-delay: 0.1s; }
+        .item:nth-child(2) { animation-delay: 0.2s; }
+        .item:nth-child(3) { animation-delay: 0.3s; }
+        .item:nth-child(4) { animation-delay: 0.4s; }
+
+        @media (max-width: 600px) {
+            .container { padding: 80px 24px; }
+            .item-title { font-size: 26px; }
+            .item { padding: 35px 0; }
+            .description { padding-left: 0; }
+            .item-main { grid-template-columns: 40px 1fr auto; }
+        }
+
+        footer {
+            margin-top: 80px;
+            font-size: 10px;
+            color: #cccccc;
+            letter-spacing: 0.2em;
+            text-transform: uppercase;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="list">
+            
+            <div class="item">
+                <div class="item-main">
+                    <span class="item-number">01</span>
+                    <!-- METS TON LIEN DANS LE HREF CI-DESSOUS -->
+                    <a href="https://www.decathlon.fr/tous-les-sports/musculation-cross-training/barres-de-traction" target="_blank" class="item-content" style="text-decoration:none; color:inherit;">
+                        <h2 class="item-title">Barre de traction</h2>
+                        <p class="item-subtitle">Je ne sais pas si c'est vraiment utile mais sans essayer, impossible de savoir.</p>
+                    </a>
+                    <button class="more-btn" onclick="toggleItem(this)">Détails</button>
+                </div>
+                <div class="description">
+                    <p class="description-text">Le genre de barre qui se fixe entre les portes ou un modèle autoportant de type chaise-romaine pour les tractions et les dips.</p>
+                </div>
+            </div>
+
+            <div class="item">
+                <div class="item-main">
+                    <span class="item-number">02</span>
+                    <!-- METS TON LIEN DANS LE HREF CI-DESSOUS -->
+                    <a href="https://www.exemple.com/casque" target="_blank" class="item-content" style="text-decoration:none; color:inherit;">
+                        <h2 class="item-title">Écouteurs sans fils</h2>
+                        <p class="item-subtitle">Pas d'une grande nécessité mais toujours utile</p>
+                    </a>
+                    <button class="more-btn" onclick="toggleItem(this)">Détails</button>
+                </div>
+                <div class="description">
+                    <p class="description-text">Pas de références spéciales même si des écouteurs de "sport" peuvent etre intéressant , problème: c'est horrible et peut être pas un super son.</p>
+                </div>
+            </div>
+
+            <div class="item">
+                <div class="item-main">
+                    <span class="item-number">03</span>
+                    <!-- METS TON LIEN DANS LE HREF CI-DESSOUS -->
+                    <a href="https://www.decathlon.fr/tous-les-sports/musculation-cross-training/barres-de-traction" target="_blank" class="item-content" style="text-decoration:none; color:inherit;">
+                        <h2 class="item-title">Des chaussures</h2>
+                        <p class="item-subtitle">J'ai différentes idées j'ai pas tout mis.</p>
+                    </a>
+                    <button class="more-btn" onclick="toggleItem(this)">Détails</button>
+                </div>
+                <div class="description">
+                    <p class="description-text">Mizuno mxr-autres modèles/Saucony riede millenium-progrid Omni/New balance 2002r ou autre jsp (au final j'ai a peut près tout mis) </p>
+                </div>
+            </div>
+
+            <div class="item">
+                <div class="item-main">
+                    <span class="item-number">04</span>
+                    <!-- METS TON LIEN DANS LE HREF CI-DESSOUS -->
+                    <a href="https://www.exemple.com/plante" target="_blank" class="item-content" style="text-decoration:none; color:inherit;">
+                        <h2 class="item-title">Lit</h2>
+                        <p class="item-subtitle">Lit</p>
+                    </a>
+                    <button class="more-btn" onclick="toggleItem(this)">Détails</button>
+                </div>
+                <div class="description">
+                    <p class="description-text">Lit.</p>
+                </div>
+            </div>
+
+        </div>
+
+        <footer>
+            Je n'ai plus d'idée si ce n'est un gros tapis de souris de ce type : https://www.exemple.com/plante"https://www.ikea.com/fr/fr/p/susig-sous-main-liege-90457486/
+        </footer>
+    </div>
+
+    <script>
+        function toggleItem(btn) {
+            const item = btn.closest('.item');
+            item.classList.toggle('active');
+            
+            // Change le texte du bouton
+            if (item.classList.contains('active')) {
+                btn.textContent = 'Fermer';
+            } else {
+                btn.textContent = 'Détails';
+            }
+        }
+    </script>
+</body>
+</html>
