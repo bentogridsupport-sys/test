@@ -11,7 +11,7 @@
             --text-dark: #1a1a1a;
             --text-muted: #888888;
             --soft-gray: #f5f5f5;
-            --transition: all 0.4s cubic-bezier(0.25, 1, 0.5, 1);
+            --transition: all 0.3s ease;
         }
 
         * {
@@ -24,14 +24,25 @@
             font-family: 'Inter', sans-serif;
             background-color: var(--bg-color);
             color: var(--text-dark);
-            line-height: 1.6;
+            line-height: 1.5;
             -webkit-font-smoothing: antialiased;
         }
 
         .container {
-            max-width: 700px;
+            max-width: 600px;
             margin: 0 auto;
-            padding: 120px 40px;
+            padding: 80px 25px;
+        }
+
+        header {
+            margin-bottom: 60px;
+        }
+
+        h1 {
+            font-family: 'Bodoni Moda', serif;
+            font-size: 42px;
+            font-weight: 400;
+            letter-spacing: -0.03em;
         }
 
         .list {
@@ -40,248 +51,157 @@
         }
 
         .item {
-            display: flex;
-            flex-direction: column;
-            padding: 45px 0;
+            padding: 30px 0;
             border-bottom: 1px solid var(--soft-gray);
-            transition: var(--transition);
             opacity: 0;
-            transform: translateY(15px);
-            animation: fadeIn 0.8s forwards;
+            transform: translateY(10px);
+            animation: fadeIn 0.6s forwards;
         }
-
-        .item:first-child { padding-top: 0; }
 
         @keyframes fadeIn {
-            to {
-                opacity: 1;
-                transform: translateY(0);
-            }
+            to { opacity: 1; transform: translateY(0); }
         }
 
-        .item-main {
-            display: grid;
-            grid-template-columns: 60px 1fr auto;
-            align-items: baseline;
-            text-decoration: none;
-            color: inherit;
+        .item-header {
+            margin-bottom: 0;
         }
 
         .item-number {
             font-family: 'Bodoni Moda', serif;
-            font-size: 16px;
+            font-size: 13px;
             font-style: italic;
             color: var(--text-muted);
-        }
-
-        .item-content {
-            display: flex;
-            flex-direction: column;
+            display: block;
+            margin-bottom: 4px;
         }
 
         .item-title {
             font-family: 'Bodoni Moda', serif;
-            font-size: 34px;
+            font-size: 28px;
             font-weight: 400;
-            letter-spacing: -0.02em;
-            margin-bottom: 2px;
+            margin-bottom: 4px;
         }
 
-        .item-subtitle {
-            font-size: 13px;
+        .links-container {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 8px;
+            margin-top: 12px;
+        }
+
+        .shop-link {
+            font-size: 10px;
+            text-decoration: none;
+            color: var(--text-dark);
+            border: 1px solid #e0e0e0;
+            padding: 5px 12px;
+            text-transform: uppercase;
+            letter-spacing: 0.05em;
+            transition: var(--transition);
+            border-radius: 2px;
+        }
+
+        .shop-link:active {
+            background-color: var(--text-dark);
+            color: white;
+            border-color: var(--text-dark);
+        }
+
+        footer {
+            margin-top: 60px;
+            padding-top: 30px;
+        }
+
+        .footer-note {
+            font-size: 11px;
             color: var(--text-muted);
-            font-weight: 400;
+            margin-bottom: 15px;
             text-transform: uppercase;
             letter-spacing: 0.1em;
         }
 
-        .more-btn {
-            background: none;
-            border: none;
-            font-family: 'Inter', sans-serif;
-            font-size: 10px;
-            text-transform: uppercase;
-            letter-spacing: 0.15em;
-            color: var(--text-muted);
-            cursor: pointer;
-            padding: 10px;
-            transition: var(--transition);
-            border-bottom: 1px solid transparent;
-        }
-
-        .more-btn:hover {
-            color: var(--text-dark);
-            border-bottom-color: var(--text-dark);
-        }
-
-        .description {
-            max-height: 0;
-            overflow: hidden;
-            transition: all 0.5s cubic-bezier(0.25, 1, 0.5, 1);
-            padding-left: 60px;
-            margin-top: 0;
-            opacity: 0;
-        }
-
-        .item.active .description {
-            max-height: 600px;
-            margin-top: 24px;
-            opacity: 1;
-        }
-
-        .description-text {
-            font-size: 14px;
-            color: var(--text-muted);
-            max-width: 550px;
-            margin-bottom: 20px;
-            white-space: pre-line;
-        }
-
-        .links-grid {
-            display: flex;
-            flex-wrap: wrap;
-            gap: 10px;
-        }
-
-        .shop-link {
-            display: inline-block;
-            font-size: 11px;
-            text-decoration: none;
-            color: var(--text-dark);
-            border: 1px solid var(--text-dark);
-            padding: 8px 16px;
-            text-transform: uppercase;
-            letter-spacing: 0.05em;
-            transition: var(--transition);
-        }
-
-        .shop-link:hover {
-            background-color: var(--text-dark);
-            color: white;
-        }
-
+        /* Délais d'affichage */
         .item:nth-child(1) { animation-delay: 0.1s; }
         .item:nth-child(2) { animation-delay: 0.2s; }
         .item:nth-child(3) { animation-delay: 0.3s; }
         .item:nth-child(4) { animation-delay: 0.4s; }
+        .item:nth-child(5) { animation-delay: 0.5s; }
 
-        @media (max-width: 600px) {
-            .container { padding: 80px 24px; }
-            .item-title { font-size: 26px; }
-            .item { padding: 35px 0; }
-            .description { padding-left: 0; }
-            .item-main { grid-template-columns: 40px 1fr auto; }
-        }
-
-        footer {
-            margin-top: 100px;
-            padding-top: 40px;
-            border-top: 1px solid var(--soft-gray);
-        }
-
-        .footer-text {
-            font-size: 12px;
-            color: var(--text-muted);
-            margin-bottom: 20px;
+        @media (max-width: 480px) {
+            .container { padding: 50px 20px; }
+            h1 { font-size: 36px; }
+            .item-title { font-size: 24px; }
         }
     </style>
 </head>
 <body>
     <div class="container">
+        <header>
+            <h1>Sélection</h1>
+        </header>
+
         <div class="list">
             
-            <!-- Item 01 -->
+            <!-- 01 Barre de Traction -->
             <div class="item">
-                <div class="item-main">
-                    <span class="item-number">01</span>
-                    <div class="item-content">
-                        <h2 class="item-title">Barre de traction</h2>
-                        <p class="item-subtitle">Je ne sais pas si c'est vraiment utile mais sans essayer, impossible de savoir.</p>
-                    </div>
-                    <button class="more-btn" onclick="toggleItem(this)">Détails</button>
+                <span class="item-number">01</span>
+                <div class="item-header">
+                    <h2 class="item-title">Barre/station de traction</h2>
                 </div>
-                <div class="description">
-                    <p class="description-text">Le genre de barre qui se fixe entre les portes ou un modèle autoportant de type "station".</p>
-                    <div class="links-grid">
-                        <a href="https://www.decathlon.fr/tous-les-sports/musculation-cross-training/barres-de-traction" target="_blank" class="shop-link">Lien Decathlon</a>
-                    </div>
+                <div class="links-container">
+                    <a href="https://www.decathlon.fr/tous-les-sports/musculation-cross-training/barres-de-traction" target="_blank" class="shop-link">Decathlon</a>
                 </div>
             </div>
 
-            <!-- Item 02 -->
+            <!-- 02 Chaussures -->
             <div class="item">
-                <div class="item-main">
-                    <span class="item-number">02</span>
-                    <div class="item-content">
-                        <h2 class="item-title">Écouteurs sans fils</h2>
-                        <p class="item-subtitle">Pas d'une grande nécessité mais toujours utile</p>
-                    </div>
-                    <button class="more-btn" onclick="toggleItem(this)">Détails</button>
+                <span class="item-number">02</span>
+                <div class="item-header">
+                    <h2 class="item-title">Chaussures</h2>
                 </div>
-                <div class="description">
-                    <p class="description-text">Pas de références spéciales même si des écouteurs de "sport" peuvent etre intéressant , problème: c'est horrible et peut être pas un super son.</p>
-                    <div class="links-grid">
-                        <a href="https://fr.nothing.tech/products/ear?Couleur=Blanc" target="_blank" class="shop-link">Lien Nothing Audio</a>
-                    </div>
+                <div class="links-container">
+                    <a href="https://www.nike.com/fr/w?q=p-6000" target="_blank" class="shop-link">Nike P-6000</a>
+                    <a href="https://emea.mizuno.com/eu/fr-fr/sportstyle/sneakers/homme/" target="_blank" class="shop-link">Mizuno MXR/Wave rider 10</a>
+                    <a href="https://www.saucony.com/FR/fr_FR/search?q=ride+millennium" target="_blank" class="shop-link">Saucony Ride</a>
+                    <a href="https://www.courir.com/fr/c/marques/new-balance/2002r/" target="_blank" class="shop-link">NB 2002R</a>
                 </div>
             </div>
 
-            <!-- Item 03 -->
+            <!-- 03 Écouteurs -->
             <div class="item">
-                <div class="item-main">
-                    <span class="item-number">03</span>
-                    <div class="item-content">
-                        <h2 class="item-title">Des chaussures</h2>
-                        <p class="item-subtitle">J'ai différentes idées j'ai pas tout mis.</p>
-                    </div>
-                    <button class="more-btn" onclick="toggleItem(this)">Détails</button>
+                <span class="item-number">03</span>
+                <div class="item-header">
+                    <h2 class="item-title">Écouteurs sans fils</h2>
                 </div>
-                <div class="description">
-                    <p class="description-text">Mizuno mxr-autres modèles/Saucony riede millenium-progrid Omni/New balance 2002r ou autre jsp (au final j'ai a peut près tout mis)</p>
-                    <div class="links-grid">
-                        <a href="https://emea.mizuno.com/eu/fr-fr/sportstyle/sneakers/homme/?_gl=1*9wq1lo*_up*MQ..*_gs*MQ..&gclid=Cj0KCQjwp7jOBhDGARIsABe7C4eK23pY6rObiXacKOs_eNtfaV-I_1uK5kEFuXEIoFHsj4FQhpfd3GYaAv--EALw_wcB&gbraid=0AAAAAC2ocqd4Eh7VleYZczO5xfktBJcmI" target="_blank" class="shop-link">Mizuno MXR</a>
-                        <a href="https://www.saucony.com/FR/fr_FR/search?q=ride+millennium" target="_blank" class="shop-link">Saucony Ride</a>
-                        <a href="https://www.courir.com/fr/c/marques/new-balance/2002r/" target="_blank" class="shop-link">NB 2002R</a>
-                    </div>
+                <div class="links-container">
+                    <a href="https://fr.nothing.tech/products/ear?Couleur=Blanc" target="_blank" class="shop-link">Nothing Ear</a>
                 </div>
             </div>
 
-            <!-- Item 04 -->
+            <!-- 04 SSD -->
             <div class="item">
-                <div class="item-main">
-                    <span class="item-number">04</span>
-                    <div class="item-content">
-                        <h2 class="item-title">Lit</h2>
-                        <p class="item-subtitle">Lit</p>
-                    </div>
-                    <button class="more-btn" onclick="toggleItem(this)">Détails</button>
+                <span class="item-number">04</span>
+                <div class="item-header">
+                    <h2 class="item-title">SSD</h2>
                 </div>
-                <div class="description">
-                    <p class="description-text">Lit.</p>
+            </div>
+
+            <!-- 05 Lit -->
+            <div class="item">
+                <span class="item-number">05</span>
+                <div class="item-header">
+                    <h2 class="item-title">Lit</h2>
                 </div>
             </div>
 
         </div>
 
         <footer>
-            <p class="footer-text">Je n'ai plus d'idée si ce n'est un gros tapis de souris de ce type :</p>
-            <div class="links-grid">
-                <a href="https://www.ikea.com/fr/fr/p/susig-sous-main-liege-90457486/" target="_blank" class="shop-link">Lien Ikea</a>
+            <p class="footer-note">Pourquoi pas: Tapis de souris</p>
+            <div class="links-container">
+                <a href="https://www.ikea.com/fr/fr/p/susig-sous-main-liege-90457486/" target="_blank" class="shop-link">Sous-main IKEA</a>
             </div>
         </footer>
     </div>
-
-    <script>
-        function toggleItem(btn) {
-            const item = btn.closest('.item');
-            item.classList.toggle('active');
-            
-            if (item.classList.contains('active')) {
-                btn.textContent = 'Fermer';
-            } else {
-                btn.textContent = 'Détails';
-            }
-        }
-    </script>
 </body>
 </html>
